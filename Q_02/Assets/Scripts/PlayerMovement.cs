@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (direction == Vector3.zero) return;
         
-        transform.Translate(_status.MoveSpeed * Time.deltaTime * direction);
+        //normalized를 통해 정규화를 해주어, 방향벡터를 곱하게 된다면 이동속도는 오로지 MoveSpee에 의해 결정됨.
+        transform.Translate(_status.MoveSpeed * Time.deltaTime * direction.normalized);
     }
 }
