@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CubeController : MonoBehaviour
 {
-    public Vector3 SetPoint { get; private set; }
+    //set private Á¦°Å.
+    public Vector3 SetPoint { get;  set; }
 
     public void SetPosition()
     {
