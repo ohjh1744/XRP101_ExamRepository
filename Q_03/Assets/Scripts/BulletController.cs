@@ -19,6 +19,8 @@ public class BulletController : PooledBehaviour
 
     private void OnEnable()
     {
+        // 다시 생성될대 속도 초기화
+        _rigidbody.velocity = Vector3.zero;
         StartCoroutine(DeactivateRoutine());
     }
 
@@ -26,9 +28,12 @@ public class BulletController : PooledBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other
-                .GetComponent<PlayerController>()
-                .TakeHit(_damageValue);
+            // Player의 Body가 감지되면 부모object의 Player의 PlayerController을 가지고오도록 수정.
+            PlayerController playerController = other.GetComponentInParent<PlayerController>();
+            if(playerController != null)
+            {
+                playerController.TakeHit(_damageValue);
+            }
         }
     }
 
