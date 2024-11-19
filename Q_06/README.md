@@ -11,6 +11,7 @@
 제시된 프로젝트에서 발생하는 `문제들을 모두 서술`하고 올바르게 동작하도록 `소스코드를 개선`하시오.
 
 ## 답안
+
 - 문제 1: 카메라가 Player의 muzzlePoint에 위치하지 않아 따라오지 않는 문제 발생.
 - 해결 방안: CameraController의 SetTransform()에서  transform.SetPositionAndRotation(_followTarget.position,_followTarget.rotation);
             로 수정.
