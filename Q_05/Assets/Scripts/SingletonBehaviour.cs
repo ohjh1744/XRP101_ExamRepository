@@ -20,7 +20,14 @@ public class SingletonBehaviour<T> : MonoBehaviour where T : MonoBehaviour
 
     protected void SingletonInit()
     {
-        _instance = GetComponent<T>();
-        DontDestroyOnLoad(gameObject);
+        if(_instance == null)
+        {
+            _instance = GetComponent<T>();
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
