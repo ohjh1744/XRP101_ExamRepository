@@ -9,18 +9,20 @@ public class SingletonBehaviour<T> : MonoBehaviour where T : MonoBehaviour
     {
         get
         {
-            if (_instance == null)
-            {
-                _instance = FindObjectOfType<T>();
-                DontDestroyOnLoad(_instance.gameObject);
-            }
             return _instance;
         }
     }
 
     protected void SingletonInit()
     {
-        _instance = GetComponent<T>();
-        DontDestroyOnLoad(gameObject);
+        if(_instance == null)
+        {
+            _instance = GetComponent<T>();
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

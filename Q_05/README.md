@@ -18,4 +18,9 @@
 제시된 프로젝트에서 발생하는 `문제들을 모두 서술`하고 올바르게 동작하도록 `소스코드를 개선`하시오.
 
 ## 답안
-- 
+- 문제 1: MainScene과 GameScene에 EventSystem이 없어 버튼 작동 문제 발견
+- 해결방안: 각 Scene에 EventSystem 추가. 
+- 문제 2: GameManager Pause함수의 경우 time.timescale을 0으로 바꾸어도 큐브가 회전하는 문제 발생.
+- 해결방안: time.timescale 을 0으로 바꾸어도 rotate에는 영향이 없으므로, Score을 0으로 주어서 회전을 못하도록 수정.
+- 문제 3: Gamemanager의 싱글톤 문제. -> 회전값이 씬을 왔다갔다해도 저장되지않는 문제 발견.
+- 해경발안: SingletonInit()에서 _intance가 null일때 아닐때의 조건에 따라 DontDestroyOnLoad 및 Destroy 하도록 수정.
