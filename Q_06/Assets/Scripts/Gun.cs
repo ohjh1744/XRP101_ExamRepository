@@ -10,6 +10,7 @@ public class Gun : MonoBehaviour
     
     public void Fire(Transform origin)
     {
+        //ray 방향 수정.
         Ray ray = new(origin.position, origin.forward);
         RaycastHit hit;
 
