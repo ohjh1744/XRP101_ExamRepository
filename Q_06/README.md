@@ -11,4 +11,10 @@
 제시된 프로젝트에서 발생하는 `문제들을 모두 서술`하고 올바르게 동작하도록 `소스코드를 개선`하시오.
 
 ## 답안
-- 
+- 문제 1: 카메라가 Player의 muzzlePoint에 위치하지 않아 따라오지 않는 문제 발생.
+- 해결 방안: CameraController의 SetTransform()에서  transform.SetPositionAndRotation(_followTarget.position,_followTarget.rotation);
+            로 수정.
+- 문제 2: Gun의 Target Layer가 Enemy로 안되어 있어 Ray에 Enemy가 걸리지 않는 문제 발생.
+- 해결 방안: 인스펙터창에서 Gun의 Target Layer를 Enemy로 지정.
+- 문제 3: Gun의 Fire함수 내부에서 ray 방향을 Vector3.forward로 해서, ray방향이 바뀌지 않는 문제 발생.
+- 해결 방안: Vector3.forward를 origin.forward로 수정하여 가리키고 있는방향으로 ray가향하도록함.
