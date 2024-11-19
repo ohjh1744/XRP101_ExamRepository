@@ -10,6 +10,12 @@ public class PlayerController : MonoBehaviour
 
     private AudioSource _audio;
 
+    [SerializeField] private float _soundTime;
+
+    Coroutine _routine;
+
+    WaitForSeconds _waitTime;
+
     private void Awake()
     {
         Init();
@@ -18,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private void Init()
     {
         _audio = GetComponent<AudioSource>();
+        _waitTime = new WaitForSeconds(_soundTime);
     }
     
     public void TakeHit(int damage)
@@ -26,13 +33,19 @@ public class PlayerController : MonoBehaviour
 
         if (Hp <= 0)
         {
-            Die();
+            _routine = StartCoroutine(DIe());
         }
     }
 
-    public void Die()
+    // Die를 코루틴으로 구현하여 sound들린 후 꺼지도록 함.
+    IEnumerator DIe()
     {
         _audio.Play();
+
+        yield return _waitTime;
+
         gameObject.SetActive(false);
     }
+
+
 }
